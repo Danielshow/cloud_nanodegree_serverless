@@ -28,6 +28,7 @@ const serverlessConfiguration: AWS = {
         Effect: 'Allow',
         Action: [
           'dynamodb:Scan',
+          'dynamodb:PutItem',
         ],
         Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.GROUPS_TABLE}',
       },
@@ -43,11 +44,18 @@ const serverlessConfiguration: AWS = {
             method: 'get',
             path: 'groups',
             cors: true,
-            // request: {
-            //   schema: {
-            //     'application/json': schema
-            //   }
-            // }
+          }
+        }
+      ]
+    },
+    CreateGroup: {
+      handler: `src/lambda/http/createGroup.handler`,
+      events: [
+        {
+          http: {
+            method: 'post',
+            path: 'groups',
+            cors: true,
           }
         }
       ]
