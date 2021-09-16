@@ -27,7 +27,8 @@ const serverlessConfiguration: AWS = {
       shouldStartNameWithService: true,
     },
     environment: {
-      GROUPS_TABLE: 'Groups-${self:provider.stage}'
+      GROUPS_TABLE: 'Groups-${self:provider.stage}',
+      IMAGES_TABLE: 'Images-${self:provider.stage}',
     },
     lambdaHashingVersion: '20201221',
     stage: 'dev',
@@ -38,8 +39,16 @@ const serverlessConfiguration: AWS = {
         Action: [
           'dynamodb:Scan',
           'dynamodb:PutItem',
+          'dynamodb:GetItem',
         ],
         Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.GROUPS_TABLE}',
+      },
+      {
+        Effect: 'Allow',
+        Action: [
+          'dynamodb:Query',
+        ],
+        Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}',
       },
     ],
   },
@@ -73,6 +82,18 @@ const serverlessConfiguration: AWS = {
           }
         }
       ]
+    },
+    GetImages: {
+      handler: `src/lambda/http/getImages.handler`,
+      events: [
+        {
+          http: {
+            method: 'get',
+            path: 'groups/{groupId}/images',
+            cors: true
+          }
+        }
+      ]
     }
    },
   resources: {
@@ -94,6 +115,33 @@ const serverlessConfiguration: AWS = {
           ],
           BillingMode: 'PAY_PER_REQUEST',
           TableName: '${self:provider.environment.GROUPS_TABLE}'
+        }
+      },
+      ImagesTable: {
+        Type: 'AWS::DynamoDB::Table',
+        Properties: {
+          AttributeDefinitions: [
+            {
+              AttributeName: 'groupId',
+              AttributeType: 'S'
+            },
+            {
+              AttributeName: 'timestamp',
+              AttributeType: 'S'
+            }
+          ],
+          KeySchema: [
+            {
+              AttributeName: 'groupId',
+              KeyType: 'HASH'
+            },
+            {
+              AttributeName: 'timestamp',
+              KeyType: 'RANGE'
+            }
+          ],
+          BillingMode: 'PAY_PER_REQUEST',
+          TableName: '${self:provider.environment.IMAGES_TABLE}'
         }
       }
     }
