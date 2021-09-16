@@ -32,7 +32,8 @@
         {
           "Effect": "Allow",
           "Action": [
-            "dynamodb:Query"
+            "dynamodb:Query",
+            "dynamodb:PutItem"
           ],
           "Resource": "arn:aws:dynamodb:us-west-2:*:table/Images-dev"
         },
@@ -142,6 +143,12 @@
               "LogGroupName": "/aws/lambda/serverless-udagram-app-dev-GetImage"
             }
           },
+          "CreateImageLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/serverless-udagram-app-dev-CreateImage"
+            }
+          },
           "IamRoleLambdaExecution": {
             "Type": "AWS::IAM::Role",
             "Properties": {
@@ -235,7 +242,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-udagram-app/dev/1631828513590-2021-09-16T21:41:53.590Z/serverless-udagram-app.zip"
+                "S3Key": "serverless/serverless-udagram-app/dev/1631829524462-2021-09-16T21:58:44.462Z/serverless-udagram-app.zip"
               },
               "Handler": "src/lambda/http/getGroups.handler",
               "Runtime": "nodejs14.x",
@@ -267,7 +274,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-udagram-app/dev/1631828513590-2021-09-16T21:41:53.590Z/serverless-udagram-app.zip"
+                "S3Key": "serverless/serverless-udagram-app/dev/1631829524462-2021-09-16T21:58:44.462Z/serverless-udagram-app.zip"
               },
               "Handler": "src/lambda/http/createGroup.handler",
               "Runtime": "nodejs14.x",
@@ -299,7 +306,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-udagram-app/dev/1631828513590-2021-09-16T21:41:53.590Z/serverless-udagram-app.zip"
+                "S3Key": "serverless/serverless-udagram-app/dev/1631829524462-2021-09-16T21:58:44.462Z/serverless-udagram-app.zip"
               },
               "Handler": "src/lambda/http/getImages.handler",
               "Runtime": "nodejs14.x",
@@ -331,7 +338,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-udagram-app/dev/1631828513590-2021-09-16T21:41:53.590Z/serverless-udagram-app.zip"
+                "S3Key": "serverless/serverless-udagram-app/dev/1631829524462-2021-09-16T21:58:44.462Z/serverless-udagram-app.zip"
               },
               "Handler": "src/lambda/http/getImage.handler",
               "Runtime": "nodejs14.x",
@@ -356,44 +363,86 @@
               "GetImageLogGroup"
             ]
           },
-          "GetGroupsLambdaVersion3HBxEK9Bk94MpFwVus9VkqDJtQNJxcUwAs07zeV7ck": {
+          "CreateImageLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/serverless-udagram-app/dev/1631829524462-2021-09-16T21:58:44.462Z/serverless-udagram-app.zip"
+              },
+              "Handler": "src/lambda/http/createImage.handler",
+              "Runtime": "nodejs14.x",
+              "FunctionName": "serverless-udagram-app-dev-CreateImage",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "GROUPS_TABLE": "Groups-dev",
+                  "IMAGES_TABLE": "Images-dev",
+                  "IMAGE_ID_INDEX": "imageIdIndex"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "CreateImageLogGroup"
+            ]
+          },
+          "GetGroupsLambdaVersionKlhire96brkC362hC5hCcRTpFDhDTCtyCsxnTLo": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetGroupsLambdaFunction"
               },
-              "CodeSha256": "HbVSk91dGk+3GUSy3de9HAigyY/S7TumKISH+KBVvC8="
+              "CodeSha256": "cgQjnRsnOF37eX84VXYJ4vZInIHUitAamWChQVTVxWw="
             }
           },
-          "CreateGroupLambdaVersionlwCVZ1mWVfQ7Uz50UVkOHygCDibIn87FOis0zLEFDI": {
+          "CreateGroupLambdaVersionmw1dmpqsLMPXC4wntKn9Yzds0DIjRmy4IrfhDYBCyD0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateGroupLambdaFunction"
               },
-              "CodeSha256": "HbVSk91dGk+3GUSy3de9HAigyY/S7TumKISH+KBVvC8="
+              "CodeSha256": "cgQjnRsnOF37eX84VXYJ4vZInIHUitAamWChQVTVxWw="
             }
           },
-          "GetImagesLambdaVersionveVdC0hjGFBxWND9sy9g1GmVdLfONjSY8YzsX4drsE": {
+          "GetImagesLambdaVersiony5cV1nBmmL18keaARp7qlQRrXX8tmS9P6s1Lwk0I": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetImagesLambdaFunction"
               },
-              "CodeSha256": "HbVSk91dGk+3GUSy3de9HAigyY/S7TumKISH+KBVvC8="
+              "CodeSha256": "cgQjnRsnOF37eX84VXYJ4vZInIHUitAamWChQVTVxWw="
             }
           },
-          "GetImageLambdaVersionvk16b8xSwROTibv3nBJLrruX6PZygBkAWQxbJvUcv1w": {
+          "GetImageLambdaVersiony0bYHHOBvKoodLBMJGMdNmee6TGoHpVNCzDo5PTPttM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetImageLambdaFunction"
               },
-              "CodeSha256": "HbVSk91dGk+3GUSy3de9HAigyY/S7TumKISH+KBVvC8="
+              "CodeSha256": "cgQjnRsnOF37eX84VXYJ4vZInIHUitAamWChQVTVxWw="
+            }
+          },
+          "CreateImageLambdaVersionQXlDWN2KiFT5I3Q33rzeMOeJhTmMLbTCJYIOuXNemk": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "CreateImageLambdaFunction"
+              },
+              "CodeSha256": "cgQjnRsnOF37eX84VXYJ4vZInIHUitAamWChQVTVxWw="
             }
           },
           "ApiGatewayRestApi": {
@@ -470,6 +519,45 @@
                 "Ref": "ApiGatewayResourceImages"
               },
               "PathPart": "{imageId}",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceGroup": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Fn::GetAtt": [
+                  "ApiGatewayRestApi",
+                  "RootResourceId"
+                ]
+              },
+              "PathPart": "group",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceGroupGroupidVar": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceGroup"
+              },
+              "PathPart": "{groupId}",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceGroupGroupidVarImage": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceGroupGroupidVar"
+              },
+              "PathPart": "image",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
@@ -604,6 +692,51 @@
               },
               "ResourceId": {
                 "Ref": "ApiGatewayResourceImagesImageidVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodGroupGroupidVarImageOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceGroupGroupidVarImage"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -802,6 +935,60 @@
               "GetImageLambdaPermissionApiGateway"
             ]
           },
+          "ApiGatewayMethodGroupGroupidVarImagePost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceGroupGroupidVarImage"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "CreateImageLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": [],
+              "RequestValidatorId": {
+                "Ref": "ApiGatewayServerlessudagramappRequestValidator"
+              },
+              "RequestModels": {
+                "application/json": {
+                  "Ref": "ApiGatewayMethodGroupGroupidVarImagePostApplicationJsonModel"
+                }
+              }
+            },
+            "DependsOn": [
+              "CreateImageLambdaPermissionApiGateway"
+            ]
+          },
           "ApiGatewayServerlessudagramappRequestValidator": {
             "Type": "AWS::ApiGateway::RequestValidator",
             "Properties": {
@@ -840,7 +1027,30 @@
               }
             }
           },
-          "ApiGatewayDeployment1631828506004": {
+          "ApiGatewayMethodGroupGroupidVarImagePostApplicationJsonModel": {
+            "Type": "AWS::ApiGateway::Model",
+            "Properties": {
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ContentType": "application/json",
+              "Schema": {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "title": "image",
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "title"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "ApiGatewayDeployment1631829516953": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -852,10 +1062,12 @@
               "ApiGatewayMethodGroupsOptions",
               "ApiGatewayMethodGroupsGroupidVarImagesOptions",
               "ApiGatewayMethodImagesImageidVarOptions",
+              "ApiGatewayMethodGroupGroupidVarImageOptions",
               "ApiGatewayMethodGroupsGet",
               "ApiGatewayMethodGroupsPost",
               "ApiGatewayMethodGroupsGroupidVarImagesGet",
-              "ApiGatewayMethodImagesImageidVarGet"
+              "ApiGatewayMethodImagesImageidVarGet",
+              "ApiGatewayMethodGroupGroupidVarImagePost"
             ]
           },
           "GetGroupsLambdaPermissionApiGateway": {
@@ -1006,6 +1218,43 @@
               }
             }
           },
+          "CreateImageLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "CreateImageLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
           "GroupsTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
@@ -1083,7 +1332,7 @@
           "GetGroupsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetGroupsLambdaVersion3HBxEK9Bk94MpFwVus9VkqDJtQNJxcUwAs07zeV7ck"
+              "Ref": "GetGroupsLambdaVersionKlhire96brkC362hC5hCcRTpFDhDTCtyCsxnTLo"
             },
             "Export": {
               "Name": "sls-serverless-udagram-app-dev-GetGroupsLambdaFunctionQualifiedArn"
@@ -1092,7 +1341,7 @@
           "CreateGroupLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateGroupLambdaVersionlwCVZ1mWVfQ7Uz50UVkOHygCDibIn87FOis0zLEFDI"
+              "Ref": "CreateGroupLambdaVersionmw1dmpqsLMPXC4wntKn9Yzds0DIjRmy4IrfhDYBCyD0"
             },
             "Export": {
               "Name": "sls-serverless-udagram-app-dev-CreateGroupLambdaFunctionQualifiedArn"
@@ -1101,7 +1350,7 @@
           "GetImagesLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetImagesLambdaVersionveVdC0hjGFBxWND9sy9g1GmVdLfONjSY8YzsX4drsE"
+              "Ref": "GetImagesLambdaVersiony5cV1nBmmL18keaARp7qlQRrXX8tmS9P6s1Lwk0I"
             },
             "Export": {
               "Name": "sls-serverless-udagram-app-dev-GetImagesLambdaFunctionQualifiedArn"
@@ -1110,10 +1359,19 @@
           "GetImageLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetImageLambdaVersionvk16b8xSwROTibv3nBJLrruX6PZygBkAWQxbJvUcv1w"
+              "Ref": "GetImageLambdaVersiony0bYHHOBvKoodLBMJGMdNmee6TGoHpVNCzDo5PTPttM"
             },
             "Export": {
               "Name": "sls-serverless-udagram-app-dev-GetImageLambdaFunctionQualifiedArn"
+            }
+          },
+          "CreateImageLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "CreateImageLambdaVersionQXlDWN2KiFT5I3Q33rzeMOeJhTmMLbTCJYIOuXNemk"
+            },
+            "Export": {
+              "Name": "sls-serverless-udagram-app-dev-CreateImageLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -1283,7 +1541,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "GetGroupsLambdaVersion3HBxEK9Bk94MpFwVus9VkqDJtQNJxcUwAs07zeV7ck"
+        "versionLogicalId": "GetGroupsLambdaVersionKlhire96brkC362hC5hCcRTpFDhDTCtyCsxnTLo"
       },
       "CreateGroup": {
         "handler": "src/lambda/http/createGroup.handler",
@@ -1327,7 +1585,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "CreateGroupLambdaVersionlwCVZ1mWVfQ7Uz50UVkOHygCDibIn87FOis0zLEFDI"
+        "versionLogicalId": "CreateGroupLambdaVersionmw1dmpqsLMPXC4wntKn9Yzds0DIjRmy4IrfhDYBCyD0"
       },
       "GetImages": {
         "handler": "src/lambda/http/getImages.handler",
@@ -1364,7 +1622,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "GetImagesLambdaVersionveVdC0hjGFBxWND9sy9g1GmVdLfONjSY8YzsX4drsE"
+        "versionLogicalId": "GetImagesLambdaVersiony5cV1nBmmL18keaARp7qlQRrXX8tmS9P6s1Lwk0I"
       },
       "GetImage": {
         "handler": "src/lambda/http/getImage.handler",
@@ -1401,7 +1659,51 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "GetImageLambdaVersionvk16b8xSwROTibv3nBJLrruX6PZygBkAWQxbJvUcv1w"
+        "versionLogicalId": "GetImageLambdaVersiony0bYHHOBvKoodLBMJGMdNmee6TGoHpVNCzDo5PTPttM"
+      },
+      "CreateImage": {
+        "handler": "src/lambda/http/createImage.handler",
+        "events": [
+          {
+            "http": {
+              "method": "post",
+              "path": "group/{groupId}/image",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "POST"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "request": {
+                "schema": {
+                  "application/json": {
+                    "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ApiGatewayMethodGroupGroupidVarImagePostApplicationJsonModel\"][\"Properties\"][\"Schema\"]"
+                  }
+                }
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "serverless-udagram-app-dev-CreateImage",
+        "package": {
+          "artifact": ".serverless/serverless-udagram-app.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs14.x",
+        "vpc": {},
+        "versionLogicalId": "CreateImageLambdaVersionQXlDWN2KiFT5I3Q33rzeMOeJhTmMLbTCJYIOuXNemk"
       }
     },
     "resources": {
@@ -1500,7 +1802,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/serverless-udagram-app/dev/1631828513590-2021-09-16T21:41:53.590Z",
+    "artifactDirectoryName": "serverless/serverless-udagram-app/dev/1631829524462-2021-09-16T21:58:44.462Z",
     "artifact": ""
   }
 }
