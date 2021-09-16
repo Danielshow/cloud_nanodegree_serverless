@@ -8,6 +8,15 @@ const serverlessConfiguration: AWS = {
       webpackConfig: './webpack.config.js',
       includeModules: true,
     },
+    documentation: {
+      api: {
+        info: {
+          version: '1.0.0',
+          title: 'Serverless Udagram',
+          description: 'Serverless application',
+        }
+      },
+    }
   },
   plugins: ['serverless-webpack'],
   provider: {
@@ -56,6 +65,11 @@ const serverlessConfiguration: AWS = {
             method: 'post',
             path: 'groups',
             cors: true,
+            request:{
+              schema: {
+                'application/json': "${file(models/create-group-request.json)}"
+              }
+            },
           }
         }
       ]
