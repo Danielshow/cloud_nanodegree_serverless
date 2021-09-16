@@ -48,6 +48,7 @@ const serverlessConfiguration: AWS = {
         Effect: 'Allow',
         Action: [
           'dynamodb:Query',
+          'dynamodb:PutItem',
         ],
         Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}',
       },
@@ -111,6 +112,23 @@ const serverlessConfiguration: AWS = {
             method: 'get',
             path: 'images/{imageId}',
             cors: true
+          }
+        }
+      ]
+    },
+    CreateImage: {
+      handler: `src/lambda/http/createImage.handler`,
+      events: [
+        {
+          http: {
+            method: 'post',
+            path: 'group/{groupId}/image',
+            cors: true,
+            request:{
+              schema: {
+                'application/json': "${file(models/create-image-request.json)}"
+              }
+            },
           }
         }
       ]
