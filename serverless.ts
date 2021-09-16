@@ -29,6 +29,7 @@ const serverlessConfiguration: AWS = {
     environment: {
       GROUPS_TABLE: 'Groups-${self:provider.stage}',
       IMAGES_TABLE: 'Images-${self:provider.stage}',
+      IMAGE_ID_INDEX: 'imageIdIndex',
     },
     lambdaHashingVersion: '20201221',
     stage: 'dev',
@@ -49,6 +50,13 @@ const serverlessConfiguration: AWS = {
           'dynamodb:Query',
         ],
         Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}',
+      },
+      {
+        Effect: 'Allow',
+        Action: [
+          'dynamodb:Query',
+        ],
+        Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}/index/${self:provider.environment.IMAGE_ID_INDEX}',
       },
     ],
   },
@@ -94,6 +102,18 @@ const serverlessConfiguration: AWS = {
           }
         }
       ]
+    },
+    GetImage: {
+      handler: `src/lambda/http/getImage.handler`,
+      events: [
+        {
+          http: {
+            method: 'get',
+            path: 'images/{imageId}',
+            cors: true
+          }
+        }
+      ]
     }
    },
   resources: {
@@ -128,6 +148,10 @@ const serverlessConfiguration: AWS = {
             {
               AttributeName: 'timestamp',
               AttributeType: 'S'
+            },
+            {
+              AttributeName: 'imageId',
+              AttributeType: 'S'
             }
           ],
           KeySchema: [
@@ -138,6 +162,20 @@ const serverlessConfiguration: AWS = {
             {
               AttributeName: 'timestamp',
               KeyType: 'RANGE'
+            }
+          ],
+          GlobalSecondaryIndexes: [
+            {
+              IndexName: '${self:provider.environment.IMAGE_ID_INDEX}',
+              KeySchema: [
+                {
+                  AttributeName: 'imageId',
+                  KeyType: 'HASH'
+                },
+              ],
+              Projection: {
+                ProjectionType: 'ALL'
+              },          
             }
           ],
           BillingMode: 'PAY_PER_REQUEST',
