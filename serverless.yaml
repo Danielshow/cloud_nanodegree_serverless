@@ -104,12 +104,12 @@ functions:
   ConnectHandler:
     handler: src/lambda/websocket/connect.handler
     events:
-      - websocket
+      - websocket:
           route: $connect
   DisConnectHandler:
     handler: src/lambda/websocket/disconnect.handler
     events:
-      - websocket
+      - websocket:
           route: $disconnect
 resources:
   Resources:
