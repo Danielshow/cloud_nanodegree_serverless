@@ -39,7 +39,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
       groupId,
       imageId,
       ...parsedBody,
-      imageUrl: `https://${bucketName}.s3.amazonaws.com/${imageId}.jpg`,
+      imageUrl: `https://${bucketName}.s3.amazonaws.com/${imageId}`,
       timestamp: new Date().toISOString(),
   }
 
