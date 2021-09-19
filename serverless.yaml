@@ -101,6 +101,10 @@ functions:
             application/json: "${file(models/create-image-request.json)}"
   sendUploadNotifications:
     handler: src/lambda/s3/sendNotifications.handler
+    environment:
+      STAGE: ${self:provider.stage}
+      API_ID:
+        Ref: WebsocketsApi
   ConnectHandler:
     handler: src/lambda/websocket/connect.handler
     events:
