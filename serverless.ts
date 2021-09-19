@@ -30,6 +30,7 @@ const serverlessConfiguration: AWS = {
       GROUPS_TABLE: 'Groups-${self:provider.stage}',
       IMAGES_TABLE: 'Images-${self:provider.stage}',
       IMAGE_ID_INDEX: 'imageIdIndex',
+      IMAGES_BUCKET: 'serverless-udagram-images-${self:provider.stage}-daniel',
     },
     lambdaHashingVersion: '20201221',
     stage: 'dev',
@@ -198,6 +199,51 @@ const serverlessConfiguration: AWS = {
           ],
           BillingMode: 'PAY_PER_REQUEST',
           TableName: '${self:provider.environment.IMAGES_TABLE}'
+        }
+      },
+      ImagesBucket: {
+        Type: 'AWS::S3::Bucket',
+        Properties: {
+          BucketName: '${self:provider.environment.IMAGES_BUCKET}',
+          CorsConfiguration: {
+            CorsRules: [
+              {
+                AllowedHeaders: [
+                  '*'
+                ],
+                AllowedMethods: [
+                  'GET',
+                  'PUT',
+                  'POST',
+                  'DELETE',
+                  'HEAD'
+                ],
+                AllowedOrigins: [
+                  '*'
+                ],
+                MaxAge: 3000
+              }
+            ]
+          }
+        },
+      },
+      BucketPolicy: {
+        Type: 'AWS::S3::BucketPolicy',
+        Properties: {
+          PolicyDocument: {
+            Version: '2012-10-17',
+            Id: 'MyPolicy',
+            Statement: [
+              {
+                Sid: 'PublicReadForGetBucketObjects',
+                Effect: 'Allow',
+                Principal: "*",
+                Action: 's3:GetObject',
+                Resource: 'arn:aws:s3:::${self:provider.environment.IMAGES_BUCKET}/*'
+              }
+            ]
+          },
+          Bucket: '${self:resources.Resources.IMAGES_BUCKET}'
         }
       }
     }

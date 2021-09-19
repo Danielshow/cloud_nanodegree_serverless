@@ -14,7 +14,9 @@
       "environment": {
         "GROUPS_TABLE": "Groups-dev",
         "IMAGES_TABLE": "Images-dev",
-        "IMAGE_ID_INDEX": "imageIdIndex"
+        "IMAGE_ID_INDEX": "imageIdIndex",
+        "IMAGES_BUCKET": "serverless-udagram-images-dev-daniel",
+        "SIGNED_URL_EXPIRATION": "300"
       },
       "lambdaHashingVersion": "20201221",
       "stage": "dev",
@@ -242,7 +244,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-udagram-app/dev/1631829524462-2021-09-16T21:58:44.462Z/serverless-udagram-app.zip"
+                "S3Key": "serverless/serverless-udagram-app/dev/1632050725140-2021-09-19T11:25:25.140Z/serverless-udagram-app.zip"
               },
               "Handler": "src/lambda/http/getGroups.handler",
               "Runtime": "nodejs14.x",
@@ -253,7 +255,9 @@
                 "Variables": {
                   "GROUPS_TABLE": "Groups-dev",
                   "IMAGES_TABLE": "Images-dev",
-                  "IMAGE_ID_INDEX": "imageIdIndex"
+                  "IMAGE_ID_INDEX": "imageIdIndex",
+                  "IMAGES_BUCKET": "serverless-udagram-images-dev-daniel",
+                  "SIGNED_URL_EXPIRATION": "300"
                 }
               },
               "Role": {
@@ -274,7 +278,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-udagram-app/dev/1631829524462-2021-09-16T21:58:44.462Z/serverless-udagram-app.zip"
+                "S3Key": "serverless/serverless-udagram-app/dev/1632050725140-2021-09-19T11:25:25.140Z/serverless-udagram-app.zip"
               },
               "Handler": "src/lambda/http/createGroup.handler",
               "Runtime": "nodejs14.x",
@@ -285,7 +289,9 @@
                 "Variables": {
                   "GROUPS_TABLE": "Groups-dev",
                   "IMAGES_TABLE": "Images-dev",
-                  "IMAGE_ID_INDEX": "imageIdIndex"
+                  "IMAGE_ID_INDEX": "imageIdIndex",
+                  "IMAGES_BUCKET": "serverless-udagram-images-dev-daniel",
+                  "SIGNED_URL_EXPIRATION": "300"
                 }
               },
               "Role": {
@@ -306,7 +312,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-udagram-app/dev/1631829524462-2021-09-16T21:58:44.462Z/serverless-udagram-app.zip"
+                "S3Key": "serverless/serverless-udagram-app/dev/1632050725140-2021-09-19T11:25:25.140Z/serverless-udagram-app.zip"
               },
               "Handler": "src/lambda/http/getImages.handler",
               "Runtime": "nodejs14.x",
@@ -317,7 +323,9 @@
                 "Variables": {
                   "GROUPS_TABLE": "Groups-dev",
                   "IMAGES_TABLE": "Images-dev",
-                  "IMAGE_ID_INDEX": "imageIdIndex"
+                  "IMAGE_ID_INDEX": "imageIdIndex",
+                  "IMAGES_BUCKET": "serverless-udagram-images-dev-daniel",
+                  "SIGNED_URL_EXPIRATION": "300"
                 }
               },
               "Role": {
@@ -338,7 +346,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-udagram-app/dev/1631829524462-2021-09-16T21:58:44.462Z/serverless-udagram-app.zip"
+                "S3Key": "serverless/serverless-udagram-app/dev/1632050725140-2021-09-19T11:25:25.140Z/serverless-udagram-app.zip"
               },
               "Handler": "src/lambda/http/getImage.handler",
               "Runtime": "nodejs14.x",
@@ -349,7 +357,9 @@
                 "Variables": {
                   "GROUPS_TABLE": "Groups-dev",
                   "IMAGES_TABLE": "Images-dev",
-                  "IMAGE_ID_INDEX": "imageIdIndex"
+                  "IMAGE_ID_INDEX": "imageIdIndex",
+                  "IMAGES_BUCKET": "serverless-udagram-images-dev-daniel",
+                  "SIGNED_URL_EXPIRATION": "300"
                 }
               },
               "Role": {
@@ -370,7 +380,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-udagram-app/dev/1631829524462-2021-09-16T21:58:44.462Z/serverless-udagram-app.zip"
+                "S3Key": "serverless/serverless-udagram-app/dev/1632050725140-2021-09-19T11:25:25.140Z/serverless-udagram-app.zip"
               },
               "Handler": "src/lambda/http/createImage.handler",
               "Runtime": "nodejs14.x",
@@ -381,7 +391,9 @@
                 "Variables": {
                   "GROUPS_TABLE": "Groups-dev",
                   "IMAGES_TABLE": "Images-dev",
-                  "IMAGE_ID_INDEX": "imageIdIndex"
+                  "IMAGE_ID_INDEX": "imageIdIndex",
+                  "IMAGES_BUCKET": "serverless-udagram-images-dev-daniel",
+                  "SIGNED_URL_EXPIRATION": "300"
                 }
               },
               "Role": {
@@ -395,54 +407,54 @@
               "CreateImageLogGroup"
             ]
           },
-          "GetGroupsLambdaVersionKlhire96brkC362hC5hCcRTpFDhDTCtyCsxnTLo": {
+          "GetGroupsLambdaVersionED9WcA8RPTa8umKS4wlQbrvF3oVpxvkIq7aQMNCJkw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetGroupsLambdaFunction"
               },
-              "CodeSha256": "cgQjnRsnOF37eX84VXYJ4vZInIHUitAamWChQVTVxWw="
+              "CodeSha256": "5BjMoFGX/zTAtSSuVgL3HFai6Y0qkJLOSWSI3tfGLg0="
             }
           },
-          "CreateGroupLambdaVersionmw1dmpqsLMPXC4wntKn9Yzds0DIjRmy4IrfhDYBCyD0": {
+          "CreateGroupLambdaVersionfk4ob9d4oa64TjgxPMoQao70x9BDxp4d4VEUhdft4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateGroupLambdaFunction"
               },
-              "CodeSha256": "cgQjnRsnOF37eX84VXYJ4vZInIHUitAamWChQVTVxWw="
+              "CodeSha256": "5BjMoFGX/zTAtSSuVgL3HFai6Y0qkJLOSWSI3tfGLg0="
             }
           },
-          "GetImagesLambdaVersiony5cV1nBmmL18keaARp7qlQRrXX8tmS9P6s1Lwk0I": {
+          "GetImagesLambdaVersion29gdjAs1Tt5GYbQERU5cqbKRFK5ZSp0vPXnJurP4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetImagesLambdaFunction"
               },
-              "CodeSha256": "cgQjnRsnOF37eX84VXYJ4vZInIHUitAamWChQVTVxWw="
+              "CodeSha256": "5BjMoFGX/zTAtSSuVgL3HFai6Y0qkJLOSWSI3tfGLg0="
             }
           },
-          "GetImageLambdaVersiony0bYHHOBvKoodLBMJGMdNmee6TGoHpVNCzDo5PTPttM": {
+          "GetImageLambdaVersionSRkGTZYJon9oCjwlzO795De2T9nnciiTy1tpjyUe0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetImageLambdaFunction"
               },
-              "CodeSha256": "cgQjnRsnOF37eX84VXYJ4vZInIHUitAamWChQVTVxWw="
+              "CodeSha256": "5BjMoFGX/zTAtSSuVgL3HFai6Y0qkJLOSWSI3tfGLg0="
             }
           },
-          "CreateImageLambdaVersionQXlDWN2KiFT5I3Q33rzeMOeJhTmMLbTCJYIOuXNemk": {
+          "CreateImageLambdaVersionSNrJUcEAvtEQwGvlvRydL0milrEXIozloSgyKJQLo18": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateImageLambdaFunction"
               },
-              "CodeSha256": "cgQjnRsnOF37eX84VXYJ4vZInIHUitAamWChQVTVxWw="
+              "CodeSha256": "5BjMoFGX/zTAtSSuVgL3HFai6Y0qkJLOSWSI3tfGLg0="
             }
           },
           "ApiGatewayRestApi": {
@@ -1050,7 +1062,7 @@
               }
             }
           },
-          "ApiGatewayDeployment1631829516953": {
+          "ApiGatewayDeployment1632050719210": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1318,6 +1330,51 @@
               "BillingMode": "PAY_PER_REQUEST",
               "TableName": "Images-dev"
             }
+          },
+          "ImagesBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketName": "serverless-udagram-images-dev-daniel",
+              "CorsConfiguration": {
+                "CorsRules": [
+                  {
+                    "AllowedHeaders": [
+                      "*"
+                    ],
+                    "AllowedMethods": [
+                      "GET",
+                      "PUT",
+                      "POST",
+                      "DELETE",
+                      "HEAD"
+                    ],
+                    "AllowedOrigins": [
+                      "*"
+                    ],
+                    "MaxAge": 3000
+                  }
+                ]
+              }
+            }
+          },
+          "BucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+              "PolicyDocument": {
+                "Version": "2012-10-17",
+                "Id": "MyPolicy",
+                "Statement": [
+                  {
+                    "Sid": "PublicReadForGetBucketObjects",
+                    "Effect": "Allow",
+                    "Principal": "*",
+                    "Action": "s3:GetObject",
+                    "Resource": "arn:aws:s3:::serverless-udagram-images-dev-daniel/*"
+                  }
+                ]
+              },
+              "Bucket": "serverless-udagram-images-dev-daniel"
+            }
           }
         },
         "Outputs": {
@@ -1332,7 +1389,7 @@
           "GetGroupsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetGroupsLambdaVersionKlhire96brkC362hC5hCcRTpFDhDTCtyCsxnTLo"
+              "Ref": "GetGroupsLambdaVersionED9WcA8RPTa8umKS4wlQbrvF3oVpxvkIq7aQMNCJkw"
             },
             "Export": {
               "Name": "sls-serverless-udagram-app-dev-GetGroupsLambdaFunctionQualifiedArn"
@@ -1341,7 +1398,7 @@
           "CreateGroupLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateGroupLambdaVersionmw1dmpqsLMPXC4wntKn9Yzds0DIjRmy4IrfhDYBCyD0"
+              "Ref": "CreateGroupLambdaVersionfk4ob9d4oa64TjgxPMoQao70x9BDxp4d4VEUhdft4"
             },
             "Export": {
               "Name": "sls-serverless-udagram-app-dev-CreateGroupLambdaFunctionQualifiedArn"
@@ -1350,7 +1407,7 @@
           "GetImagesLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetImagesLambdaVersiony5cV1nBmmL18keaARp7qlQRrXX8tmS9P6s1Lwk0I"
+              "Ref": "GetImagesLambdaVersion29gdjAs1Tt5GYbQERU5cqbKRFK5ZSp0vPXnJurP4"
             },
             "Export": {
               "Name": "sls-serverless-udagram-app-dev-GetImagesLambdaFunctionQualifiedArn"
@@ -1359,7 +1416,7 @@
           "GetImageLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetImageLambdaVersiony0bYHHOBvKoodLBMJGMdNmee6TGoHpVNCzDo5PTPttM"
+              "Ref": "GetImageLambdaVersionSRkGTZYJon9oCjwlzO795De2T9nnciiTy1tpjyUe0"
             },
             "Export": {
               "Name": "sls-serverless-udagram-app-dev-GetImageLambdaFunctionQualifiedArn"
@@ -1368,7 +1425,7 @@
           "CreateImageLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateImageLambdaVersionQXlDWN2KiFT5I3Q33rzeMOeJhTmMLbTCJYIOuXNemk"
+              "Ref": "CreateImageLambdaVersionSNrJUcEAvtEQwGvlvRydL0milrEXIozloSgyKJQLo18"
             },
             "Export": {
               "Name": "sls-serverless-udagram-app-dev-CreateImageLambdaFunctionQualifiedArn"
@@ -1541,7 +1598,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "GetGroupsLambdaVersionKlhire96brkC362hC5hCcRTpFDhDTCtyCsxnTLo"
+        "versionLogicalId": "GetGroupsLambdaVersionED9WcA8RPTa8umKS4wlQbrvF3oVpxvkIq7aQMNCJkw"
       },
       "CreateGroup": {
         "handler": "src/lambda/http/createGroup.handler",
@@ -1585,7 +1642,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "CreateGroupLambdaVersionmw1dmpqsLMPXC4wntKn9Yzds0DIjRmy4IrfhDYBCyD0"
+        "versionLogicalId": "CreateGroupLambdaVersionfk4ob9d4oa64TjgxPMoQao70x9BDxp4d4VEUhdft4"
       },
       "GetImages": {
         "handler": "src/lambda/http/getImages.handler",
@@ -1622,7 +1679,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "GetImagesLambdaVersiony5cV1nBmmL18keaARp7qlQRrXX8tmS9P6s1Lwk0I"
+        "versionLogicalId": "GetImagesLambdaVersion29gdjAs1Tt5GYbQERU5cqbKRFK5ZSp0vPXnJurP4"
       },
       "GetImage": {
         "handler": "src/lambda/http/getImage.handler",
@@ -1659,7 +1716,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "GetImageLambdaVersiony0bYHHOBvKoodLBMJGMdNmee6TGoHpVNCzDo5PTPttM"
+        "versionLogicalId": "GetImageLambdaVersionSRkGTZYJon9oCjwlzO795De2T9nnciiTy1tpjyUe0"
       },
       "CreateImage": {
         "handler": "src/lambda/http/createImage.handler",
@@ -1703,7 +1760,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "CreateImageLambdaVersionQXlDWN2KiFT5I3Q33rzeMOeJhTmMLbTCJYIOuXNemk"
+        "versionLogicalId": "CreateImageLambdaVersionSNrJUcEAvtEQwGvlvRydL0milrEXIozloSgyKJQLo18"
       }
     },
     "resources": {
@@ -1771,12 +1828,57 @@
             "BillingMode": "PAY_PER_REQUEST",
             "TableName": "Images-dev"
           }
+        },
+        "ImagesBucket": {
+          "Type": "AWS::S3::Bucket",
+          "Properties": {
+            "BucketName": "serverless-udagram-images-dev-daniel",
+            "CorsConfiguration": {
+              "CorsRules": [
+                {
+                  "AllowedHeaders": [
+                    "*"
+                  ],
+                  "AllowedMethods": [
+                    "GET",
+                    "PUT",
+                    "POST",
+                    "DELETE",
+                    "HEAD"
+                  ],
+                  "AllowedOrigins": [
+                    "*"
+                  ],
+                  "MaxAge": 3000
+                }
+              ]
+            }
+          }
+        },
+        "BucketPolicy": {
+          "Type": "AWS::S3::BucketPolicy",
+          "Properties": {
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Id": "MyPolicy",
+              "Statement": [
+                {
+                  "Sid": "PublicReadForGetBucketObjects",
+                  "Effect": "Allow",
+                  "Principal": "*",
+                  "Action": "s3:GetObject",
+                  "Resource": "arn:aws:s3:::serverless-udagram-images-dev-daniel/*"
+                }
+              ]
+            },
+            "Bucket": "serverless-udagram-images-dev-daniel"
+          }
         }
       },
       "Outputs": {}
     },
     "configValidationMode": "warn",
-    "serviceFilename": "serverless.ts",
+    "serviceFilename": "serverless.yaml",
     "initialServerlessConfig": {
       "service": {
         "$ref": "$[\"service\"][\"serviceObject\"]"
@@ -1802,7 +1904,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/serverless-udagram-app/dev/1631829524462-2021-09-16T21:58:44.462Z",
+    "artifactDirectoryName": "serverless/serverless-udagram-app/dev/1632050725140-2021-09-19T11:25:25.140Z",
     "artifact": ""
   }
 }
