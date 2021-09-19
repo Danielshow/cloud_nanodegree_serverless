@@ -92,7 +92,7 @@ functions:
           schema:
             application/json: "${file(models/create-image-request.json)}"
   sendUploadNotifications:
-    handler: src/lambda/s3/sendNotifications.ts
+    handler: src/lambda/s3/sendNotifications.handler
 resources:
   Resources:
     GroupsTable:
