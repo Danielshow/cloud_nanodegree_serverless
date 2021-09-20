@@ -115,6 +115,12 @@ functions:
     events:
       - websocket:
           route: $disconnect
+  SyncWithElasticSearch:
+    handler: src/lambda/dynamoDb/elasticSearchSync.handler
+    events:
+      - stream:
+          type: dynamodb
+          arn: !GetAtt ImagesTable.StreamArn
 resources:
   Resources:
     GroupsTable:
@@ -151,6 +157,8 @@ resources:
           Projection:
             ProjectionType: ALL
         BillingMode: PAY_PER_REQUEST
+        StreamSpecification:
+          StreamViewType: NEW_IMAGE
         TableName: "${self:provider.environment.IMAGES_TABLE}"
     ConnectionsTable:
       Type: AWS::DynamoDB::Table
