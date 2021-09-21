@@ -279,7 +279,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-udagram-app/dev/1632129102146-2021-09-20T09:11:42.146Z/serverless-udagram-app.zip"
+          "S3Key": "serverless/serverless-udagram-app/dev/1632264143306-2021-09-21T22:42:23.306Z/serverless-udagram-app.zip"
         },
         "Handler": "src/lambda/http/getGroups.handler",
         "Runtime": "nodejs14.x",
@@ -314,7 +314,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-udagram-app/dev/1632129102146-2021-09-20T09:11:42.146Z/serverless-udagram-app.zip"
+          "S3Key": "serverless/serverless-udagram-app/dev/1632264143306-2021-09-21T22:42:23.306Z/serverless-udagram-app.zip"
         },
         "Handler": "src/lambda/http/createGroup.handler",
         "Runtime": "nodejs14.x",
@@ -349,7 +349,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-udagram-app/dev/1632129102146-2021-09-20T09:11:42.146Z/serverless-udagram-app.zip"
+          "S3Key": "serverless/serverless-udagram-app/dev/1632264143306-2021-09-21T22:42:23.306Z/serverless-udagram-app.zip"
         },
         "Handler": "src/lambda/http/getImages.handler",
         "Runtime": "nodejs14.x",
@@ -384,7 +384,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-udagram-app/dev/1632129102146-2021-09-20T09:11:42.146Z/serverless-udagram-app.zip"
+          "S3Key": "serverless/serverless-udagram-app/dev/1632264143306-2021-09-21T22:42:23.306Z/serverless-udagram-app.zip"
         },
         "Handler": "src/lambda/http/getImage.handler",
         "Runtime": "nodejs14.x",
@@ -419,7 +419,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-udagram-app/dev/1632129102146-2021-09-20T09:11:42.146Z/serverless-udagram-app.zip"
+          "S3Key": "serverless/serverless-udagram-app/dev/1632264143306-2021-09-21T22:42:23.306Z/serverless-udagram-app.zip"
         },
         "Handler": "src/lambda/http/createImage.handler",
         "Runtime": "nodejs14.x",
@@ -454,7 +454,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-udagram-app/dev/1632129102146-2021-09-20T09:11:42.146Z/serverless-udagram-app.zip"
+          "S3Key": "serverless/serverless-udagram-app/dev/1632264143306-2021-09-21T22:42:23.306Z/serverless-udagram-app.zip"
         },
         "Handler": "src/lambda/s3/sendNotifications.handler",
         "Runtime": "nodejs14.x",
@@ -493,7 +493,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-udagram-app/dev/1632129102146-2021-09-20T09:11:42.146Z/serverless-udagram-app.zip"
+          "S3Key": "serverless/serverless-udagram-app/dev/1632264143306-2021-09-21T22:42:23.306Z/serverless-udagram-app.zip"
         },
         "Handler": "src/lambda/websocket/connect.handler",
         "Runtime": "nodejs14.x",
@@ -528,7 +528,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-udagram-app/dev/1632129102146-2021-09-20T09:11:42.146Z/serverless-udagram-app.zip"
+          "S3Key": "serverless/serverless-udagram-app/dev/1632264143306-2021-09-21T22:42:23.306Z/serverless-udagram-app.zip"
         },
         "Handler": "src/lambda/websocket/disconnect.handler",
         "Runtime": "nodejs14.x",
@@ -563,7 +563,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-udagram-app/dev/1632129102146-2021-09-20T09:11:42.146Z/serverless-udagram-app.zip"
+          "S3Key": "serverless/serverless-udagram-app/dev/1632264143306-2021-09-21T22:42:23.306Z/serverless-udagram-app.zip"
         },
         "Handler": "src/lambda/dynamoDb/elasticSearchSync.handler",
         "Runtime": "nodejs14.x",
@@ -591,94 +591,94 @@
         "SyncWithElasticSearchLogGroup"
       ]
     },
-    "GetGroupsLambdaVersionxYpd9Tpltb7jXsOA9sMeUX6OpuHoUz0FlYol3ezDo": {
+    "GetGroupsLambdaVersionGZmLevPb4zkondScKZkpIXXgPw2pnn0lghyctBYaGX8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetGroupsLambdaFunction"
         },
-        "CodeSha256": "U2DdGbFgfzrn1wfWCm83z3p6DUAcRShhnAICLUXqaV0="
+        "CodeSha256": "V/EcWqDGbUh7oFinOyhkKshOouHVHnU2oUuiAjV1GKE="
       }
     },
-    "CreateGroupLambdaVersion4RwhtU3tvq9ny1wIKtlVEp8zCLFgOSyr4OW1f8QRY": {
+    "CreateGroupLambdaVersionvNkyWov0PRBlddHrYZP8lKOXnwj2f23dX96NXWXUb8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateGroupLambdaFunction"
         },
-        "CodeSha256": "U2DdGbFgfzrn1wfWCm83z3p6DUAcRShhnAICLUXqaV0="
+        "CodeSha256": "V/EcWqDGbUh7oFinOyhkKshOouHVHnU2oUuiAjV1GKE="
       }
     },
-    "GetImagesLambdaVersionbKp1XtIYyvTiTj9euu3wYlgkusKAQC9wVqT83A2Be8k": {
+    "GetImagesLambdaVersionPl7WwhWAwglrW6BC0D1ZElYsFXutPWCIa1Q2YzOZVTU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetImagesLambdaFunction"
         },
-        "CodeSha256": "U2DdGbFgfzrn1wfWCm83z3p6DUAcRShhnAICLUXqaV0="
+        "CodeSha256": "V/EcWqDGbUh7oFinOyhkKshOouHVHnU2oUuiAjV1GKE="
       }
     },
-    "GetImageLambdaVersionosaa4HkgnSQsmU6kfFnECQBemJ0z8EiwvAl9xitvyJY": {
+    "GetImageLambdaVersion90ngPrCOKlW1COOXYdZzhLrBJapzLFsb766E1Be60": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetImageLambdaFunction"
         },
-        "CodeSha256": "U2DdGbFgfzrn1wfWCm83z3p6DUAcRShhnAICLUXqaV0="
+        "CodeSha256": "V/EcWqDGbUh7oFinOyhkKshOouHVHnU2oUuiAjV1GKE="
       }
     },
-    "CreateImageLambdaVersionn9SuFNq3rtRClW04MtL1HdjSPn3skwdTIRM9RuHLJpM": {
+    "CreateImageLambdaVersionHjVX6drf4rDRQJ1UFeIY1vOS9h11hAuMfDmhXeObuw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateImageLambdaFunction"
         },
-        "CodeSha256": "U2DdGbFgfzrn1wfWCm83z3p6DUAcRShhnAICLUXqaV0="
+        "CodeSha256": "V/EcWqDGbUh7oFinOyhkKshOouHVHnU2oUuiAjV1GKE="
       }
     },
-    "SendUploadNotificationsLambdaVersionk8crbFqsc0az7AIL9M6pUcehPpxGtTIk1fi0hQcU0M": {
+    "SendUploadNotificationsLambdaVersionLCw2XSvj7AnNmbSkm42FxyFRRoBD9x2hjI5kyvLAtNs": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SendUploadNotificationsLambdaFunction"
         },
-        "CodeSha256": "U2DdGbFgfzrn1wfWCm83z3p6DUAcRShhnAICLUXqaV0="
+        "CodeSha256": "V/EcWqDGbUh7oFinOyhkKshOouHVHnU2oUuiAjV1GKE="
       }
     },
-    "ConnectHandlerLambdaVersionCZo5SumySk7ilukUHwwa63oyhIvvhzDz3iZkv10tE": {
+    "ConnectHandlerLambdaVersionhg4PGVdrLSI0iFvAOTXN3UExbmk39i2GyiU1caUy0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ConnectHandlerLambdaFunction"
         },
-        "CodeSha256": "U2DdGbFgfzrn1wfWCm83z3p6DUAcRShhnAICLUXqaV0="
+        "CodeSha256": "V/EcWqDGbUh7oFinOyhkKshOouHVHnU2oUuiAjV1GKE="
       }
     },
-    "DisConnectHandlerLambdaVersionEmexbU3YYWWzoAcdyEstg3TFCpMEaooN2t0MjBFE": {
+    "DisConnectHandlerLambdaVersion7wzTGvnUd56c3XRWmlqtmKB2LXQiEFxiHOEuJbUmFoY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DisConnectHandlerLambdaFunction"
         },
-        "CodeSha256": "U2DdGbFgfzrn1wfWCm83z3p6DUAcRShhnAICLUXqaV0="
+        "CodeSha256": "V/EcWqDGbUh7oFinOyhkKshOouHVHnU2oUuiAjV1GKE="
       }
     },
-    "SyncWithElasticSearchLambdaVersionMu3gCmOuLphHXOVmdjl62RyCJ8TpSZRN438HRDaTmZs": {
+    "SyncWithElasticSearchLambdaVersion7WyYfKnlXyjTm1oefMtXLhIx93PqzDPDxVUIc3nw2fE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SyncWithElasticSearchLambdaFunction"
         },
-        "CodeSha256": "U2DdGbFgfzrn1wfWCm83z3p6DUAcRShhnAICLUXqaV0="
+        "CodeSha256": "V/EcWqDGbUh7oFinOyhkKshOouHVHnU2oUuiAjV1GKE="
       }
     },
     "ApiGatewayRestApi": {
@@ -1286,7 +1286,7 @@
         }
       }
     },
-    "ApiGatewayDeployment1632129095792": {
+    "ApiGatewayDeployment1632264137372": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1846,6 +1846,47 @@
         },
         "Bucket": "serverless-udagram-images-dev-daniel"
       }
+    },
+    "ImagesSearch": {
+      "Type": "AWS::Elasticsearch::Domain",
+      "Properties": {
+        "ElasticsearchVersion": "6.3",
+        "DomainName": "images-search-dev",
+        "ElasticsearchClusterConfig": {
+          "DedicatedMasterEnabled": false,
+          "InstanceCount": "1",
+          "ZoneAwarenessEnabled": false,
+          "InstanceType": "t2.small.elasticsearch"
+        },
+        "EBSOptions": {
+          "EBSEnabled": true,
+          "Iops": 0,
+          "VolumeSize": 10,
+          "VolumeType": "gp2"
+        },
+        "AccessPolicies": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": "*"
+              },
+              "Action": "es:*",
+              "Resource": {
+                "Fn::Sub": "arn:aws:es:us-west-2:${AWS::AccountId}:domain/images-search-dev/*"
+              },
+              "Condition": {
+                "IpAddress": {
+                  "aws:SourceIp": [
+                    "41.217.100.67"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
     }
   },
   "Outputs": {
@@ -1860,7 +1901,7 @@
     "GetGroupsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetGroupsLambdaVersionxYpd9Tpltb7jXsOA9sMeUX6OpuHoUz0FlYol3ezDo"
+        "Ref": "GetGroupsLambdaVersionGZmLevPb4zkondScKZkpIXXgPw2pnn0lghyctBYaGX8"
       },
       "Export": {
         "Name": "sls-serverless-udagram-app-dev-GetGroupsLambdaFunctionQualifiedArn"
@@ -1869,7 +1910,7 @@
     "CreateGroupLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateGroupLambdaVersion4RwhtU3tvq9ny1wIKtlVEp8zCLFgOSyr4OW1f8QRY"
+        "Ref": "CreateGroupLambdaVersionvNkyWov0PRBlddHrYZP8lKOXnwj2f23dX96NXWXUb8"
       },
       "Export": {
         "Name": "sls-serverless-udagram-app-dev-CreateGroupLambdaFunctionQualifiedArn"
@@ -1878,7 +1919,7 @@
     "GetImagesLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetImagesLambdaVersionbKp1XtIYyvTiTj9euu3wYlgkusKAQC9wVqT83A2Be8k"
+        "Ref": "GetImagesLambdaVersionPl7WwhWAwglrW6BC0D1ZElYsFXutPWCIa1Q2YzOZVTU"
       },
       "Export": {
         "Name": "sls-serverless-udagram-app-dev-GetImagesLambdaFunctionQualifiedArn"
@@ -1887,7 +1928,7 @@
     "GetImageLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetImageLambdaVersionosaa4HkgnSQsmU6kfFnECQBemJ0z8EiwvAl9xitvyJY"
+        "Ref": "GetImageLambdaVersion90ngPrCOKlW1COOXYdZzhLrBJapzLFsb766E1Be60"
       },
       "Export": {
         "Name": "sls-serverless-udagram-app-dev-GetImageLambdaFunctionQualifiedArn"
@@ -1896,7 +1937,7 @@
     "CreateImageLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateImageLambdaVersionn9SuFNq3rtRClW04MtL1HdjSPn3skwdTIRM9RuHLJpM"
+        "Ref": "CreateImageLambdaVersionHjVX6drf4rDRQJ1UFeIY1vOS9h11hAuMfDmhXeObuw"
       },
       "Export": {
         "Name": "sls-serverless-udagram-app-dev-CreateImageLambdaFunctionQualifiedArn"
@@ -1905,7 +1946,7 @@
     "SendUploadNotificationsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SendUploadNotificationsLambdaVersionk8crbFqsc0az7AIL9M6pUcehPpxGtTIk1fi0hQcU0M"
+        "Ref": "SendUploadNotificationsLambdaVersionLCw2XSvj7AnNmbSkm42FxyFRRoBD9x2hjI5kyvLAtNs"
       },
       "Export": {
         "Name": "sls-serverless-udagram-app-dev-SendUploadNotificationsLambdaFunctionQualifiedArn"
@@ -1914,7 +1955,7 @@
     "ConnectHandlerLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ConnectHandlerLambdaVersionCZo5SumySk7ilukUHwwa63oyhIvvhzDz3iZkv10tE"
+        "Ref": "ConnectHandlerLambdaVersionhg4PGVdrLSI0iFvAOTXN3UExbmk39i2GyiU1caUy0"
       },
       "Export": {
         "Name": "sls-serverless-udagram-app-dev-ConnectHandlerLambdaFunctionQualifiedArn"
@@ -1923,7 +1964,7 @@
     "DisConnectHandlerLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DisConnectHandlerLambdaVersionEmexbU3YYWWzoAcdyEstg3TFCpMEaooN2t0MjBFE"
+        "Ref": "DisConnectHandlerLambdaVersion7wzTGvnUd56c3XRWmlqtmKB2LXQiEFxiHOEuJbUmFoY"
       },
       "Export": {
         "Name": "sls-serverless-udagram-app-dev-DisConnectHandlerLambdaFunctionQualifiedArn"
@@ -1932,7 +1973,7 @@
     "SyncWithElasticSearchLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SyncWithElasticSearchLambdaVersionMu3gCmOuLphHXOVmdjl62RyCJ8TpSZRN438HRDaTmZs"
+        "Ref": "SyncWithElasticSearchLambdaVersion7WyYfKnlXyjTm1oefMtXLhIx93PqzDPDxVUIc3nw2fE"
       },
       "Export": {
         "Name": "sls-serverless-udagram-app-dev-SyncWithElasticSearchLambdaFunctionQualifiedArn"
