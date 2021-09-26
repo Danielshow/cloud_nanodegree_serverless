@@ -5,6 +5,7 @@ custom:
   webpack:
     webpackConfig: "./webpack.config.js"
     includeModules: true
+  topicName: imagesTopic-${self:provider.stage}
   documentation:
     api:
       info:
@@ -57,14 +58,6 @@ provider:
     - dynamodb:GetItem
     - dynamodb:DeleteItem
     Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.CONNECTIONS_TABLE}
-custom:
-  topicName: imagesTopic-${self.provider.stage}
-  documentation:
-    api:
-      info:
-        version: v1.0.0
-        title: Udagram Api
-        description: Serverless Application for images sharing
 functions:
   GetGroups:
     handler: src/lambda/http/getGroups.handler
@@ -198,9 +191,9 @@ resources:
       Properties:
         BucketName: "${self:provider.environment.IMAGES_BUCKET}"
         NotificationConfiguration:
-          LambdaConfigurations:
-          - Event: s3:ObjectCreated:Put
-            Topic: !Ref ImagesTopic
+          TopicConfigurations:
+            - Event: s3:ObjectCreated:Put
+              Topic: !Ref ImagesTopic
             # Function: !GetAtt SendUploadNotificationsLambdaFunction.Arn
         CorsConfiguration:
           CorsRules:
@@ -289,6 +282,6 @@ resources:
                 !Ref ImagesTopic
               Condition:
                 ArnLike:
-                  AWS:Source:Arn: arn:aws:s3:::${self:provider.environment.IMAGES_BUCKET}
+                  AWS:SourceArn: arn:aws:s3:::${self:provider.environment.IMAGES_BUCKET}
         Topics:
-          - !Ref  ImagesTopic
+          - !Ref ImagesTopic
