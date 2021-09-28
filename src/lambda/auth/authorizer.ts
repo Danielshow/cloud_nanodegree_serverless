@@ -1,11 +1,23 @@
 import { APIGatewayAuthorizerResult, APIGatewayAuthorizerHandler, APIGatewayTokenAuthorizerEvent } from 'aws-lambda'
+import { verify } from 'jsonwebtoken';
+import { JwtToken } from '../../auth/jwtToken';
+import * as AWS from 'aws-sdk';
+
+
+const secretId = process.env.AUTH_0_SECRET_ID;
+const secretField = process.env.AUTH_0_SECRET_FIELD;
+
+const client = new AWS.SecretsManager();
+
+// cache the secret
+let cachedSecret: string;
 
 export const handler: APIGatewayAuthorizerHandler = async (event: APIGatewayTokenAuthorizerEvent): Promise<APIGatewayAuthorizerResult> => {
     try {
-      verifyToken(event.authorizationToken);
+      const decodedToken = await verifyToken(event.authorizationToken);
       console.log('Authorized');
       return {
-            principalId: 'user',
+            principalId: decodedToken.sub,
             policyDocument: {
                 Version: '2012-10-17',
                 Statement: [
@@ -38,21 +50,10 @@ export const handler: APIGatewayAuthorizerHandler = async (event: APIGatewayToke
     }
 }
 
-async function verifyToken(authHeader: string): Promise<void> {
+async function verifyToken(authHeader: string): Promise<JwtToken> {
     const token = getToken(authHeader);
-    if (token != '123') throw new Error('Invalid token');
-    // const url = `https://${process.env.AUTH0_DOMAIN}/tokeninfo?id_token=${token}`;
-    // const response = await fetch(url, {
-    //     method: 'GET',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Accept': 'application/json'
-    //     }
-    // });
-    // const body = await response.json();
-    // if (response.status !== 200) {
-    //     throw new Error(body.error_description);
-    // }
+    const secret = await getSecret();
+    return verify(token, secret) as JwtToken;
 }
 
 function getToken(authHeader: string): string {
@@ -65,4 +66,15 @@ function getToken(authHeader: string): string {
     const token = split[1];
 
     return token;
+}
+
+async function getSecret() {
+    if (cachedSecret) return cachedSecret;
+
+    const data = await client.getSecretValue({ SecretId: secretId }).promise();
+    const secret = JSON.parse(data.SecretString)[secretField];
+
+    cachedSecret = secret;
+
+    return secret;
 }
