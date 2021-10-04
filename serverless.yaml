@@ -2,6 +2,15 @@
 service: serverless-udagram-app
 frameworkVersion: '2'
 custom:
+  serverless-offline:
+    port: 3003
+  dynamodb:
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+    stages: # Add this section of the config
+      - dev
   webpack:
     webpackConfig: "./webpack.config.js"
     includeModules: true
@@ -13,7 +22,9 @@ custom:
         title: Serverless Udagram
         description: Serverless application
 plugins:
-- serverless-webpack
+  - serverless-webpack
+  - serverless-offline
+  - serverless-dynamodb-local
 provider:
   name: aws
   runtime: nodejs14.x
@@ -31,7 +42,7 @@ provider:
     AUTH_0_SECRET_ID: Auth0Secret-${self:provider.stage}
     AUTH_0_SECRET_FIELD: auth0Secret
   lambdaHashingVersion: '20201221'
-  stage: dev
+  stage: ${opt:stage, "dev"}
   region: us-west-2
   iamRoleStatements:
   - Effect: Allow
