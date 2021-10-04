@@ -4,6 +4,7 @@ import * as AWS  from 'aws-sdk'
 import * as uuid from 'uuid'
 import * as middy from 'middy';
 import { cors } from 'middy/middlewares';
+import { getUserId } from 'src/auth/utils';
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 const groupsTable = process.env.GROUPS_TABLE;
@@ -13,10 +14,12 @@ export const handler = middy(async (event: APIGatewayProxyEvent): Promise<APIGat
     const itemId = uuid.v4();
 
     const parsedBody = JSON.parse(event.body);
+    const userId = getUserId(event.headers.Authorization);
     const newItem = {
         id: itemId,
         ...parsedBody,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        userId
     }
     await docClient.put({
         TableName: groupsTable,

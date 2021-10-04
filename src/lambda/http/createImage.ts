@@ -4,6 +4,7 @@ import * as AWS  from 'aws-sdk'
 import * as uuid from 'uuid'
 import * as middy from 'middy';
 import { cors } from 'middy/middlewares';
+import { getUserId } from 'src/auth/utils';
 
 const docClient = new AWS.DynamoDB.DocumentClient()
 
@@ -25,9 +26,6 @@ export const handler = middy(async (event: APIGatewayProxyEvent): Promise<APIGat
   if (!validGroupId) {
     return {
       statusCode: 404,
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      },
       body: JSON.stringify({
         error: 'Group does not exist'
       })
@@ -42,6 +40,7 @@ export const handler = middy(async (event: APIGatewayProxyEvent): Promise<APIGat
       imageId,
       ...parsedBody,
       imageUrl: `https://${bucketName}.s3.amazonaws.com/${imageId}`,
+      userId: getUserId(event.headers.Authorization),
       timestamp: new Date().toISOString(),
   }
 

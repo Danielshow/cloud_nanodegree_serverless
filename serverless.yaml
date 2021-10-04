@@ -76,6 +76,8 @@ provider:
 functions:
   Auth:
     handler: src/lambda/auth/authorizer.handler
+  RS256Authorizer:
+    handler: src/lambda/auth/rs256Authorizer.handler
   GetGroups:
     handler: src/lambda/http/getGroups.handler
     events:
@@ -90,7 +92,7 @@ functions:
         method: post
         path: groups
         cors: true
-        authorizer: Auth
+        authorizer: RS256Authorizer
         request:
           schema:
             application/json: "${file(models/create-group-request.json)}"
@@ -115,7 +117,7 @@ functions:
         method: post
         path: group/{groupId}/image
         cors: true
-        authorizer: Auth
+        authorizer: RS256Authorizer
         request:
           schema:
             application/json: "${file(models/create-image-request.json)}"
