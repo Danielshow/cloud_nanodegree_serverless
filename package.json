@@ -30,6 +30,7 @@
     "serverless": "^2.60.3",
     "serverless-dynamodb-local": "^0.2.40",
     "serverless-offline": "^8.2.0",
+    "serverless-plugin-canary-deployments": "^0.7.0",
     "serverless-webpack": "^5.3.5",
     "ts-loader": "^8.0.15",
     "ts-node": "^9.1.1",

@@ -25,6 +25,7 @@ plugins:
   - serverless-webpack
   - serverless-offline
   - serverless-dynamodb-local
+  - serverless-plugin-canary-deployments
 provider:
   name: aws
   runtime: nodejs14.x
@@ -84,6 +85,11 @@ provider:
     Action:
     - kms:Decrypt
     Resource: !GetAtt KMSKey.Arn
+  - Effect: Allow
+    Action:
+    - codedeploy:*
+    Resource:
+    - '*'
 functions:
   Auth:
     handler: src/lambda/auth/authorizer.handler
@@ -107,6 +113,9 @@ functions:
         request:
           schema:
             application/json: "${file(models/create-group-request.json)}"
+    deploymentSettings:
+      type: Linear10PercentEvery1Minute
+      alias: live
   GetImages:
     handler: src/lambda/http/getImages.handler
     events:

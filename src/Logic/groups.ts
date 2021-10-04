@@ -14,7 +14,8 @@ export async function getAllGroups(jwtToken: string): Promise<Group[]> {
       id: group.id,
       name: group.name,
       description: group.description,
-      userId: group.userId
+      userId: group.userId,
+      timestamp: group.timestamp,
     };
   });
 }
@@ -29,7 +30,8 @@ export async function createGroup(
     id: groupId,
     name: createGroupRequest.name,
     description: createGroupRequest.description,
-    userId
+    userId,
+    timestamp: new Date().toISOString()
   };
   await groupsAccess.createGroup(newGroup);
   return newGroup;
